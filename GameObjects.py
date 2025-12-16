@@ -1,8 +1,15 @@
+"""
+Тут всевозможные объекты, которые могут быть на игровом поле.
+"""
 class MapObject:
-    def __init__(self, x, y, isBlocking = True):
+    """
+    is_blocking - в одной клетке может быть сколько угодно объектов, где этот параметр = False,
+    но не более одного, у которого True
+    """
+    def __init__(self, x, y, is_blocking = True):
         self.x = x
         self.y = y
-        self.isBlocking = isBlocking
+        self.isBlocking = is_blocking
 
     def get_position(self):
         return self.x, self.y
@@ -13,7 +20,11 @@ class MapObject:
 
 
 class ActingObject:
-    def do_next_turn(self): #В этом методе для каждого активного объекта должен содержаться его "интеллект"
+    """
+    Интерфейс для объектов, которые могут выполнять какие-то действия самостоятельно.
+    Сюда включаются как и монстры с возможным "интеллектом", так и ловушки, которые просто срабатывают при нажатии(и пр)
+    """
+    def do_next_turn(self):
         pass
 
 class Hero(MapObject, ActingObject):
@@ -64,16 +75,16 @@ class Dragon(MapObject, ActingObject):
         pass
 
 class EmptyCell(MapObject):
-    def __init__(self, x, y, isBlocking=False):
-        super().__init__(x, y)
+    def __init__(self, x, y, is_blocking=False):
+        super().__init__(x, y, is_blocking)
 
 class Wall(MapObject):
     def __init__(self, x, y):
         super().__init__(x, y)
 
 class SpikeTrap(MapObject, ActingObject):
-    def __init__(self, x, y, isBlocking=False):
-        super().__init__(x, y)
+    def __init__(self, x, y, is_blocking=False):
+        super().__init__(x, y, is_blocking)
     def do_next_turn(self):
         pass
 

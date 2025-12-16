@@ -1,6 +1,10 @@
 from ChronoDungeonMaster8 import GameStatus
 import GameObjects
 
+"""
+Тут будет заранее заданная карта, которую в будущем можно заменить генерацией
+"""
+
 MAP_WIDTH = 10
 MAP_HEIGHT = 10
 

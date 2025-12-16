@@ -1,6 +1,10 @@
 import TrackableRandom
 import BaseMap
 import GameObjects
+"""
+В этом модуле хранится в целом состояние игры (карта, запас маны и пр), 
+а также точка входа в игру.
+"""
 class GameStatus:
     def __init__(self):
         self.game_map = []
@@ -65,7 +69,12 @@ def start_game():
     print("Game started")
     game_loop()
 
+
 def game_loop():
+    """
+    Здесь должен быть цикл, внутри которого будет обработка одного хода,
+    т.е. начинаем с общения с игроком, когда игрок завершает ход - обрабатываем всю карту, и начинаем снова.
+    """
     while map_manager.game_turn_statuses[-1].hero.cur_hp > 0:
         player_interaction()
         make_turn()
